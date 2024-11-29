@@ -1,125 +1,125 @@
-Indian Food Image Classifier
-This project involves building a deep learning-based food image classifier that identifies 150 different classes of Indian food items. The classifier uses advanced hybrid architectures and optimization techniques to achieve high accuracy and robustness on a diverse dataset of Indian food images.
+# **Indian Food Image Classifier**
 
-Table of Contents
-Introduction
-Dataset
-Model Architecture
-Overcoming Overfitting
-Preprocessing
-Training
-Evaluation
-Usage
-Results
-Future Work
-Contributing
-License
-Introduction
-Food classification is an essential task in applications like recipe recommendation, dietary analysis, and restaurant automation. This project aims to classify Indian food images into 150 categories using state-of-the-art deep learning architectures. Through extensive experimentation, we developed hybrid models and explored various loss functions, optimizers, and regularization techniques to achieve optimal performance.
+This project involves building a deep learning-based food image classifier capable of identifying 150 different classes of Indian food items. The project explores various state-of-the-art architectures, including hybrid models, to achieve high accuracy and robust performance on a complex dataset.
 
-Dataset
-The dataset contains images of 150 Indian food categories, such as:
+---
 
-Biryani, Butter Chicken, Gulab Jamun, Dosa, Idli, etc.
-Structure:
-Training Set: ~70% of the images.
-Validation Set: ~20% of the images.
-Test Set: ~10% of the images.
-The dataset underwent preprocessing to ensure uniformity in image size and quality.
+## **Table of Contents**
 
-Model Architecture
-We adopted a hybrid approach combining the strengths of multiple architectures:
+- [Introduction](#introduction)
+- [Dataset](#dataset)
+- [Model Architecture](#model-architecture)
+- [Overcoming Overfitting](#overcoming-overfitting)
+- [Preprocessing](#preprocessing)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Usage](#usage)
+- [Results](#results)
+- [Future Work](#future-work)
+- [Contributing](#contributing)
+- [License](#license)
 
-Vision Transformer (ViT):
+---
 
-Leveraged for its ability to capture global relationships in images.
-Fine-tuned on the dataset.
-EfficientNet:
+## **Introduction**
 
-Incorporated for its efficient scaling and feature extraction capabilities.
-ConvNeXt:
+Food classification is an essential task in applications like recipe recommendation, dietary analysis, and restaurant automation. This project classifies Indian food images into 150 categories using advanced architectures. The model integrates features from multiple Convolutional Neural Networks (CNNs) and Transformer-based models for improved accuracy and robustness.
 
-Added to enhance local feature learning with modern CNN design principles.
-Final Layers:
+---
 
-Combined extracted features from these models using concatenation and a series of dense layers.
-Dropout layers were added for regularization, followed by a softmax activation for 150-class classification.
-Overcoming Overfitting
-To address overfitting, we implemented the following strategies:
+## **Dataset**
 
-Data Augmentation:
+The dataset consists of 150 classes of Indian food items, including popular dishes like Biryani, Butter Chicken, Gulab Jamun, Dosa, and Idli.
 
-Applied random rotations, horizontal flips, zoom, and brightness adjustments during training.
-Dropout Layers:
+### Dataset Structure:
+- **Training Set**: ~70% of the images.
+- **Validation Set**: ~20% of the images.
+- **Test Set**: ~10% of the images.
 
-Added dropout with rates between 0.3 and 0.5 in the dense layers.
-Early Stopping:
+Each image is preprocessed to maintain consistency in quality and size.
 
-Monitored validation loss and stopped training once no improvement was observed.
-Weight Regularization:
+---
 
-Included L2 regularization in dense layers to penalize overly complex weights.
-Model Fine-Tuning:
+## **Model Architecture**
 
-Gradually unfroze pre-trained layers while using a low learning rate to avoid overfitting.
-Preprocessing
-Image Resizing:
-Resized all images to 224x224 pixels.
-Normalization:
-Scaled pixel values to the range [0, 1].
-Class Balancing:
-Oversampled minority classes to ensure balanced training.
-Training
-We explored various loss functions and optimizers to achieve optimal results:
+To achieve state-of-the-art performance, we utilized the following architectures:
 
-Loss Functions:
+### **Core Architectures**
+1. **Vision Transformer (ViT)**: For capturing global relationships in images using self-attention.
+2. **EfficientNet (B7)**: For efficient scaling and feature extraction.
+3. **ConvNeXt**: A modern CNN architecture combining local feature extraction with strong generalization.
+4. **ResNet (50, 101)**: For capturing residual connections to prevent vanishing gradients.
+5. **MobileNetV3**: Lightweight and optimized for mobile and low-resource applications.
+6. **DenseNet (201)**: For efficient feature reuse through dense connections.
+7. **InceptionV3 & InceptionResNetV2**: For multi-scale feature extraction and residual learning.
+8. **Xception**: For efficient learning using depthwise separable convolutions.
+9. **NASNet-Large**: Designed using Neural Architecture Search for high accuracy.
+10. **VGG (16, 19)**: Classical architectures used as baselines for comparison.
+11. **Swin Transformer**: Hierarchical Transformer with local and global feature learning.
 
-Sparse Categorical Crossentropy: Worked best for the dataset.
-Focal Loss: Tested to address class imbalance, but simpler methods sufficed.
-Optimizers:
+### **Hybrid Architectures**
+We experimented with various hybrid combinations to leverage the strengths of multiple models:
+- **EfficientNet + ResNet-50 + ViT**: Combined global features from ViT with local features from EfficientNet and ResNet.
+- **ConvNeXt + InceptionV3 + DenseNet-201**: Merged ConvNeXt's local feature extraction with DenseNet's gradient flow and InceptionV3's multi-scale capabilities.
+- **MobileNetV3 + ViT**: Balanced lightweight computation with global feature representation.
 
-Adam: Primary optimizer with dynamic learning rate scheduling.
-SGD with Momentum: Tested for stability and improved convergence.
-Hyperparameter Tuning:
+### **Feature Fusion**
+- Extracted features from each architecture were concatenated.
+- Fully connected layers refined the combined features.
+- Dropout and L2 regularization prevented overfitting.
+- The final dense layer with softmax activation outputted probabilities for 150 classes.
 
-Tuned batch size, learning rate, and dropout rates using grid search.
-Batch Size: 32.
+---
 
-Epochs: 50 (with early stopping).
+## **Overcoming Overfitting**
 
-Evaluation
-The model was evaluated on the test set using the following metrics:
+To ensure the model generalized well to unseen data:
+1. **Data Augmentation**: Techniques like random rotation, flipping, zoom, and brightness adjustment.
+2. **Dropout Layers**: Added dropout with rates between 0.3 and 0.5.
+3. **Early Stopping**: Stopped training based on validation loss to avoid overfitting.
+4. **L2 Regularization**: Penalized large weights to prevent overfitting.
+5. **Gradual Unfreezing**: Fine-tuned pre-trained layers gradually with a low learning rate.
 
-Accuracy: Overall classification performance.
-Precision, Recall, F1-Score: Detailed per-class analysis.
-Confusion Matrix: To visualize misclassifications.
-Usage
-Requirements
+---
+
+## **Preprocessing**
+
+1. **Image Resizing**: Resized all images to 224x224 pixels.
+2. **Normalization**: Scaled pixel values to the range [0, 1].
+3. **Class Balancing**: Oversampled minority classes to ensure balanced training.
+
+---
+
+## **Training**
+
+We tested various loss functions and optimizers:
+1. **Loss Functions**:
+   - Sparse Categorical Crossentropy: Best performance on this dataset.
+   - Focal Loss: Tested to address class imbalance but not necessary for this dataset.
+2. **Optimizers**:
+   - Adam: Primary optimizer with dynamic learning rate scheduling.
+   - SGD with Momentum: Tested for stability and improved convergence.
+
+### Training Parameters:
+- **Batch Size**: 32.
+- **Epochs**: 50 (with early stopping).
+- **Learning Rate Scheduler**: Adjusted dynamically during training.
+
+---
+
+## **Evaluation**
+
+The model was evaluated using the following metrics:
+- **Accuracy**: Overall classification performance.
+- **Precision, Recall, F1-Score**: Detailed per-class analysis.
+- **Confusion Matrix**: Visualized misclassifications.
+
+---
+
+## **Usage**
+
+### **Requirements**
 Install the required dependencies:
 
-bash
-Copy code
+```bash
 pip install -r requirements.txt
-Inference
-To classify an image:
-
-Place the image in the test_images/ directory.
-Run the inference script:
-bash
-Copy code
-python predict.py --image test_images/sample.jpg
-Output:
-Predicted class label.
-Confidence score.
-Results
-Accuracy: ~92% on the test set.
-Inference Time: ~100ms per image on a GPU.
-Future Work
-Extend the classifier to include global cuisines.
-Deploy the model as a web application for real-world use.
-Experiment with advanced architectures like Swin Transformers and ensemble techniques.
-Contributing
-Contributions are welcome! Please submit a pull request or report issues in the repository.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
