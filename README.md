@@ -4,23 +4,6 @@ This project involves building a deep learning-based food image classifier capab
 
 ---
 
-## **Table of Contents**
-
-- [Introduction](#introduction)
-- [Dataset](#dataset)
-- [Model Architecture](#model-architecture)
-- [Overcoming Overfitting](#overcoming-overfitting)
-- [Preprocessing](#preprocessing)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [Usage](#usage)
-- [Results](#results)
-- [Future Work](#future-work)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## **Introduction**
 
 Food classification is an essential task in applications like recipe recommendation, dietary analysis, and restaurant automation. This project classifies Indian food images into 150 categories using advanced architectures. The model integrates features from multiple Convolutional Neural Networks (CNNs) and Transformer-based models for improved accuracy and robustness.
